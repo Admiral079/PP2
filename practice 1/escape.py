@@ -1,2 +1,2 @@
-txt = "This is a backslash: \\"
+txt = "Hello\nWorld!"
 print(txt)
