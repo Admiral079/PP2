@@ -1,9 +1,7 @@
-x = "awesome"
+x = int(input())
 
-def myfunc():
-  global x
-  x = "fantastic"
-
-myfunc()
-
-print("Python is " + x)
+def func():
+    global x
+    x += 5
+func()
+print(x)
