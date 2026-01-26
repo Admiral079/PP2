@@ -1,5 +1,5 @@
-txt = "banana"
+txt = "I love apples, apple are my favorite fruit"
 
-x = txt.center(20)
+x = txt.count("apple")
 
 print(x)
