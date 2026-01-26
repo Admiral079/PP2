@@ -1,2 +1,3 @@
-txt = f"The price is {20 * 59} dollars"
-print(txt)
+age = 36
+txt = "My name is John, and I am {}"
+print(txt.format(age))
