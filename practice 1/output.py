@@ -1,4 +1,4 @@
-x = "Python" #maybe
-y = "is" #maybe
-z = "awesome" #maybe
-print(x, y, z)
+x = "Python "
+y = "is "
+z = "awesome"
+print(x + y + z)
