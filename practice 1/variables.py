@@ -1,4 +1,3 @@
-x = 5
-y = "John"
+x = 4
+x = "Sally"
 print(x)
-print(y)
