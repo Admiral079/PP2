@@ -1,8 +1,7 @@
-x = y = z = "Orange"
+fruits = ["apple", "banana", "cherry"]
+x, y, z = fruits
 print(x)
 print(y)
 print(z)
 
-# "Orange"
-# "Orange"
-# "Orange"
+#print element in the list
