@@ -1,5 +1,5 @@
-txt = "python is FUN!"
+txt = "Hello, And Welcome To My World!"
 
-x = txt.capitalize()
+x = txt.casefold()
 
-print (x)
+print(x)
