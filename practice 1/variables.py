@@ -1,3 +1,3 @@
-x = "John"
-#same
-x = 'John'
+a = 4
+A = "Sally"
+#diff vars
