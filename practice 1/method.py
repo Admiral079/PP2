@@ -1,5 +1,5 @@
-txt = "I love apples, apple are my favorite fruit"
+txt = "My name is Ståle"
 
-x = txt.count("apple")
+x = txt.encode()
 
 print(x)
