@@ -1,2 +1,1 @@
-#This is a comment.
-print("Hello, World!")
+print("Python is fun!")
