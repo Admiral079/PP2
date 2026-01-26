@@ -1,2 +1,2 @@
-txt = "We are the so-called \"Vikings\" from the north."
+txt = "This is a backslash: \\"
 print(txt)
