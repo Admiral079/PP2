@@ -1,9 +1,9 @@
-password = "1234"
-input = ""
+total = 0
 
 while True:
-    input = input()
-    if input == password:
-        print("ok")
+    x = int(input())
+    if x < 0:
         break
-    print("wrong")
+    total += x
+
+print(total)
