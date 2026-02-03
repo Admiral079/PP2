@@ -1,2 +1,2 @@
-for x in "banana":
-  print(x)
+for i in range(5):
+    print(i)
