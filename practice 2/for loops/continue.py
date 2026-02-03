@@ -1,4 +1,4 @@
-for c in "python":
-    if c == "h":
+for i in range(1, 11):
+    if i % 3 == 0:
         continue
-    print(c)
+    print(i)
