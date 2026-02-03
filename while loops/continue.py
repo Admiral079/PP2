@@ -1,6 +1,7 @@
-i = 0
-while i < 10:
-    i += 1
-    if i % 2 == 0:
+while True:
+    x = int(input())
+    if x == 0:
         continue
-    print(i)
+    if x < 0:
+        break
+    print(x)
