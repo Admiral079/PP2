@@ -1,4 +1,4 @@
-x = 10
-while x > 0:
-    print(x)
-    x -= 2
+i = 1
+while i <= 5:
+    print(i)
+    i += 1
