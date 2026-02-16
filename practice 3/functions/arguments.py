@@ -1,4 +1,4 @@
-def my_function(name): # name is a parameter
-  print("Hello", name)
+def my_function(fname, lname):
+  print(fname + " " + lname)
 
-my_function("Emil") # "Emil" is an argument
+my_function("Emil", "Refsnes")
