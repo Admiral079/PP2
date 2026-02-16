@@ -1,7 +1,7 @@
-def my_function(**myvar):
-  print("Type:", type(myvar))
-  print("Name:", myvar["name"])
-  print("Age:", myvar["age"])
-  print("All data:", myvar)
+def my_function(username, **details):
+  print("Username:", username)
+  print("Additional details:")
+  for key, value in details.items():
+    print(" ", key + ":", value)
 
-my_function(name = "Tobias", age = 30, city = "Bergen")
+my_function("emil123", age = 25, city = "Oslo", hobby = "coding")
