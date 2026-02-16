@@ -1,7 +1,6 @@
-def my_function(username, **details):
-  print("Username:", username)
-  print("Additional details:")
-  for key, value in details.items():
-    print(" ", key + ":", value)
+def my_function(title, *args, **kwargs):
+  print("Title:", title)
+  print("Positional arguments:", args)
+  print("Keyword arguments:", kwargs)
 
-my_function("emil123", age = 25, city = "Oslo", hobby = "coding")
+my_function("User Info", "Emil", "Tobias", age = 25, city = "Oslo")
