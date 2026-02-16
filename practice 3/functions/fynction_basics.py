@@ -1,8 +1,7 @@
-def fahrenheit_to_celsius(fahrenheit):
-  return (fahrenheit - 32) * 5 / 9
+def get_greeting():
+  return "Hello from a function"
 
-print(fahrenheit_to_celsius(77))
-print(fahrenheit_to_celsius(95))
-print(fahrenheit_to_celsius(50))
+message = get_greeting()
+print(message)
 
-#reusable code with function
+#returns value
