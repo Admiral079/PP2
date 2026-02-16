@@ -1,7 +1,6 @@
 def my_function():
-  return ["apple", "banana", "cherry"]
+  return (10, 20)
 
-fruits = my_function()
-print(fruits[0])
-print(fruits[1])
-print(fruits[2])
+x, y = my_function()
+print("x:", x)
+print("y:", y)
