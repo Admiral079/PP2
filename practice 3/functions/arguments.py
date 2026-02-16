@@ -1,6 +1,5 @@
-def my_function(person):
-  print("Name:", person["name"])
-  print("Age:", person["age"])
+def my_function(x, y):
+  return x + y
 
-my_person = {"name": "Emil", "age": 25}
-my_function(my_person)
+result = my_function(5, 3)
+print(result)
