@@ -1,5 +1,4 @@
-def my_function(animal, name):
-  print("I have a", animal)
-  print("My", animal + "'s name is", name)
+def my_function(animal, name, age):
+  print("I have a", age, "year old", animal, "named", name)
 
-my_function("Buddy", "dog")
+my_function("dog", name = "Buddy", age = 5)
