@@ -1,6 +1,4 @@
-def my_function():
-  return (10, 20)
+def my_function(name, /):
+  print("Hello", name)
 
-x, y = my_function()
-print("x:", x)
-print("y:", y)
+my_function("Emil")
