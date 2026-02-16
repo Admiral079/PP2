@@ -1,4 +1,4 @@
-def my_function(name, /):
+def my_function(name):
   print("Hello", name)
 
-my_function("Emil")
+my_function(name = "Emil")
