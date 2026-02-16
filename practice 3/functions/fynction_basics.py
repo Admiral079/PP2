@@ -1,6 +1,4 @@
-def get_greeting():
-  return "Hello from a function"
+def my_function():
+  pass
 
-print(get_greeting())
-
-#returns value directly
+#in case if we want function but not using it
