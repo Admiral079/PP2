@@ -1,6 +1,6 @@
-def my_function(title, *args, **kwargs):
-  print("Title:", title)
-  print("Positional arguments:", args)
-  print("Keyword arguments:", kwargs)
+def my_function(a, b, c):
+  return a + b + c
 
-my_function("User Info", "Emil", "Tobias", age = 25, city = "Oslo")
+numbers = [1, 2, 3]
+result = my_function(*numbers) # Same as: my_function(1, 2, 3)
+print(result)
