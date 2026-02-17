@@ -13,4 +13,5 @@ x = {
   ]
 }
 
-print(json.dumps(x))
+# use four indents to make it easier to read the result:
+print(json.dumps(x, indent=4))
