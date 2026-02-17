@@ -1,11 +1,13 @@
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+class Car:
+    def __init__(self, brand, speed):
+        self.brand = brand
+        self.speed = speed
 
-    def greet(self):
-        return f"Hello, my name is {self.name}"
+    def accelerate(self, value):
+        self.speed += value
 
 
-p1 = Person("Aman", 18)
-print(p1.greet())
+car1 = Car("Toyota", 100)
+car1.accelerate(20)
+
+print(car1.speed)  # 120
