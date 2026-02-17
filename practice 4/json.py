@@ -1,7 +1,14 @@
 import json
 
-x =  '{ "name":"John", "age":30, "city":"New York"}'
+# a Python object (dict):
+x = {
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
 
-y = json.loads(x)
+# convert into JSON:
+y = json.dumps(x)
 
-print(y["age"])
+# the result is a JSON string:
+print(y)
