@@ -1,4 +1,6 @@
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
-utc_now = datetime.now(timezone.utc)
-print(utc_now)
+tz = timezone(timedelta(hours=5))
+now = datetime.now(tz)
+
+print(now)
