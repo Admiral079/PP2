@@ -1,6 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timezone
 
-now = datetime.now()
-future = now + timedelta(days=10)
-
-print(future)
+utc_now = datetime.now(timezone.utc)
+print(utc_now)
