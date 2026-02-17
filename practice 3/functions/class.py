@@ -1,13 +1,17 @@
-class Animal:
+class Person:
     def __init__(self, name):
         self.name = name
 
-    def speak(self):
-        return "Some sound"
+    def introduce(self):
+        return f"My name is {self.name}"
 
-class Dog(Animal):
-    pass
+class Student(Person):
+    def __init__(self, name, gpa):
+        super().__init__(name)
+        self.gpa = gpa
 
-d = Dog("Buddy")
-print(d.name)
-print(d.speak())
+    def introduce(self):
+        return f"My name is {self.name}, GPA: {self.gpa}"
+
+s = Student("Aman", 3.8)
+print(s.introduce())
