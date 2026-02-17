@@ -1,12 +1,12 @@
-class Student:
-    university = "KBTU"
+class Book:
+    def __init__(self, title, author):
+        self.title = title
+        self.author = author
 
-    def __init__(self, name):
-        self.name = name
+book1 = Book("1984", "Orwell")
 
+book1.title = "Animal Farm"
 
-s1 = Student("Aman")
-s2 = Student("Bob")
+del book1.author
 
-print(s1.university)
-print(s2.university)
+print(book1.title)
