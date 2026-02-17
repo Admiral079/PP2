@@ -1,12 +1,13 @@
-class Book:
-    def __init__(self, title, author):
-        self.title = title
-        self.author = author
+class Animal:
+    def __init__(self, name):
+        self.name = name
 
-book1 = Book("1984", "Orwell")
+    def speak(self):
+        return "Some sound"
 
-book1.title = "Animal Farm"
+class Dog(Animal):
+    pass
 
-del book1.author
-
-print(book1.title)
+d = Dog("Buddy")
+print(d.name)
+print(d.speak())
