@@ -1,11 +1,14 @@
-class Employee:
-    def work(self):
-        return "Working"
+class Father:
+    def skills(self):
+        return "Driving"
 
-class Manager(Employee):
-    def work(self):
-        base = super().work()
-        return base + " Managing team."
+class Mother:
+    def skills2(self):
+        return "Cooking"
 
-m = Manager()
-print(m.work())
+class Child(Father, Mother):
+    pass
+
+c = Child()
+print(c.skills())
+print(c.skills2())
