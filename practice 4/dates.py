@@ -1,4 +1,2 @@
-import datetime
-
-today = datetime.date.today()
-print(today)
+dt = datetime.datetime(2026, 2, 17, 22, 30, 0)
+print(dt)
