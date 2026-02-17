@@ -1,7 +1,6 @@
-import datetime
+from datetime import datetime, timedelta
 
-d1 = datetime.date(2026, 2, 17)
-d2 = datetime.date(2026, 3, 1)
+now = datetime.now()
+future = now + timedelta(days=10)
 
-df = d2 - d1
-print(df)
+print(future)
