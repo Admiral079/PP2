@@ -1,17 +1,11 @@
-class Person:
-    def __init__(self, name):
-        self.name = name
+class Employee:
+    def work(self):
+        return "Working"
 
-    def introduce(self):
-        return f"My name is {self.name}"
+class Manager(Employee):
+    def work(self):
+        base = super().work()
+        return base + " Managing team."
 
-class Student(Person):
-    def __init__(self, name, gpa):
-        super().__init__(name)
-        self.gpa = gpa
-
-    def introduce(self):
-        return f"My name is {self.name}, GPA: {self.gpa}"
-
-s = Student("Aman", 3.8)
-print(s.introduce())
+m = Manager()
+print(m.work())
