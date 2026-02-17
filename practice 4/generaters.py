@@ -1,7 +1,11 @@
-my_list = [1, 2, 3]
+def my_generator():
+    yield 1
+    yield 2
+    yield 3
 
-my_iter = iter(my_list)
 
-print(next(my_iter))
-print(next(my_iter))
-print(next(my_iter))
+gen = my_generator()
+
+print(next(gen))
+print(next(gen))
+print(next(gen))
