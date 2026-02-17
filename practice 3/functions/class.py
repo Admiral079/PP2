@@ -1,13 +1,12 @@
-class Car:
-    def __init__(self, brand, speed):
-        self.brand = brand
-        self.speed = speed
+class Student:
+    university = "KBTU"
 
-    def accelerate(self, value):
-        self.speed += value
+    def __init__(self, name):
+        self.name = name
 
 
-car1 = Car("Toyota", 100)
-car1.accelerate(20)
+s1 = Student("Aman")
+s2 = Student("Bob")
 
-print(car1.speed)  # 120
+print(s1.university)
+print(s2.university)
