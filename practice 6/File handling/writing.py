@@ -5,7 +5,7 @@ f.close()
 
 #2
 with open("test.txt", "a") as f:
-    f.write("World\n")4
+    f.write("World\n")
     
 #3
 with open("numbers.txt", "w") as f:
