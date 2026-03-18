@@ -9,6 +9,7 @@ prices = re.findall(r"\d{1,3}(?:\s\d{3})*,\d{2}", text)
 
 print(prices)
 
+
 #2
 raw_products = re.findall(r"\d+\.\n([^\n]+)", text)
 clean_products = []
@@ -49,3 +50,39 @@ data["payment_method"] = re.search(r"(Банковская карта|Налич
 data["total_amount"] = re.search(r"ИТОГО:\s*\n([\d\s]+,\d{2})", text).group(1)
 
 print(json.dumps(data, ensure_ascii=False, indent=4))
+
+#extra 
+a = re.findall(r"^ab*", text)
+if a:
+    print(a)
+    
+b = re.findall(r"^ab{2,3}", text)
+if b:
+    print(b)
+
+c = re.findall(r"^[a-z]+_[a-z]+", text)
+if c:
+    print(c)
+
+d = re.findall(r"^[A-Z][a-z]", text)
+if d:
+    print(d)
+
+e = re.findall(r"\ba.*b\b", text)
+if e:
+    print(e)
+    
+f = re.sub(r"[,\.]", ":", text)
+print(f)
+
+g = re.sub(r"_(\w)", lambda m: m.group(1).upper(), text)
+print(g)
+
+h = re.split(r"?=[A-z]", text)
+print(h)
+
+i = re.sub(r"(?=[A-Z])", " ", text)
+print(i)
+
+j= re.sub(r"([A-Z])", r"_\1", text).lower()
+print(j)
