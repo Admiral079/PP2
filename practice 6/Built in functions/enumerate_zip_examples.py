@@ -1,6 +1,6 @@
 #1
 a = ["a", "b", "c"]
-for i, v in enumerate(a):
+for i, v in enumerate(a, start=1):
     print(i, v)
     
 #2
