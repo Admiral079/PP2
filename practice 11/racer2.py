@@ -18,33 +18,30 @@ difficulty_index = 1
 difficulties = ["Easy", "Normal", "Hard"]
 
 def apply_difficulty():
-    global player_speed, enemy_speed, coin_speed
+    global player_speed, enemy_speed
     if difficulty == "Easy":
         player_speed = 5 / 1.5
-        enemy_speed = 3
-        coin_speed = 3
+        enemy_speed = 5 / 2
     elif difficulty == "Normal":
         player_speed = 5
         enemy_speed = 5
-        coin_speed = 5
     else:
         player_speed = 5
-        enemy_speed = 8
-        coin_speed = 7
+        enemy_speed = 5 * 2
 
 def reset_game():
     player = pygame.Rect(180, 500, 40, 60)
-    enemies = []
+    enemy = pygame.Rect(random.randint(0, WIDTH-40), -60, 40, 60)
     coins = []
     score = 0
-    enemy_timer = 0
     coin_timer = 0
-    return player, enemies, coins, score, enemy_timer, coin_timer
+    return player, enemy, coins, score, coin_timer
 
 apply_difficulty()
 
-player, enemies, coins, score, enemy_timer, coin_timer = reset_game()
+player, enemy, coins, score, coin_timer = reset_game()
 
+coin_speed = 5
 state = "menu"
 
 running = True
@@ -93,7 +90,7 @@ while running:
         screen.blit(hint, (WIDTH//2 - hint.get_width()//2, 500))
 
         if keys[pygame.K_SPACE]:
-            player, enemies, coins, score, enemy_timer, coin_timer = reset_game()
+            player, enemy, coins, score, coin_timer = reset_game()
             state = "game"
 
     elif state == "game":
@@ -102,45 +99,56 @@ while running:
         if keys[pygame.K_RIGHT] and player.x < WIDTH - player.width:
             player.x += player_speed
 
-        enemy_timer += 1
-        
-        if enemy_timer > 40:
-            enemy = pygame.Rect(random.randint(0, WIDTH-40), -60, 40, 60)
-            enemies.append(enemy)
-            enemy_timer = 0
-
-        for enemy in enemies[:]:
-            enemy.y += enemy_speed
-            if enemy.y > HEIGHT:
-                enemies.remove(enemy)
-            elif player.colliderect(enemy):
-                state = "game_over"
+        enemy.y += enemy_speed
+        if enemy.y > HEIGHT:
+            enemy.y = -60
+            enemy.x = random.randint(0, WIDTH - 40)
 
         coin_timer += 1
-        
-        if coin_timer > 30:
+        if coin_timer > 35:
+            weight = random.choice([1, 2, 3])
+            if weight == 1:
+                color = (255, 255, 0)
+                value = 1
+                size = 15
+            elif weight == 2:
+                color = (0, 255, 0)
+                value = 3
+                size = 18
+            else:
+                color = (255, 0, 255)
+                value = 5
+                size = 22
+
             coin = {
-                "rect": pygame.Rect(random.randint(0, WIDTH-20), -20, 15, 15),
-                "value": 1
+                "rect": pygame.Rect(random.randint(0, WIDTH-30), -20, size, size),
+                "value": value,
+                "color": color
             }
             coins.append(coin)
             coin_timer = 0
 
-        for coin in coins[:]:
+        for coin in coins:
             coin["rect"].y += coin_speed
-            if coin["rect"].y > HEIGHT:
-                coins.remove(coin)
-            elif player.colliderect(coin["rect"]):
+
+        coins = [c for c in coins if c["rect"].y < HEIGHT]
+
+        for coin in coins[:]:
+            if player.colliderect(coin["rect"]):
                 score += coin["value"]
                 coins.remove(coin)
-        
+
+        if score > 0 and score % 10 == 0:
+            enemy_speed += 0.05
+
+        if player.colliderect(enemy):
+            state = "game_over"
+
         pygame.draw.rect(screen, (0, 200, 255), player)
-        
-        for enemy in enemies:
-            pygame.draw.rect(screen, (255, 0, 0), enemy)
-        
+        pygame.draw.rect(screen, (255, 0, 0), enemy)
+
         for coin in coins:
-            pygame.draw.rect(screen, (255, 255, 0), coin["rect"])
+            pygame.draw.rect(screen, coin["color"], coin["rect"])
 
         text = font.render(f"Score: {score}", True, (255, 255, 255))
         screen.blit(text, (WIDTH - text.get_width() - 10, 10))
@@ -168,7 +176,7 @@ while running:
         
         if keys[pygame.K_m]:
             state = "menu"
-            player, enemies, coins, score, enemy_timer, coin_timer = reset_game()
+            player, enemy, coins, score, coin_timer = reset_game()
 
     elif state == "game_over":
         overlay = pygame.Surface((WIDTH, HEIGHT))
@@ -188,12 +196,12 @@ while running:
         screen.blit(menu, (WIDTH//2 - menu.get_width()//2, 400))
 
         if keys[pygame.K_SPACE]:
-            player, enemies, coins, score, enemy_timer, coin_timer = reset_game()
+            player, enemy, coins, score, coin_timer = reset_game()
             state = "game"
 
         if keys[pygame.K_m]:
             state = "menu"
-            player, enemies, coins, score, enemy_timer, coin_timer = reset_game()
+            player, enemy, coins, score, coin_timer = reset_game()
 
     pygame.display.flip()
     clock.tick(60)
