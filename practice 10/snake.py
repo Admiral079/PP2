@@ -86,7 +86,7 @@ while running:
 
     if game_over:
         over = font.render("Game Over", True, (255, 0, 0))
-        restart = font.render("Press SPACE", True, (255, 255, 255))
+        restart = font.render("Press SPACE to continue", True, (255, 255, 255))
         screen.blit(over, (230, 250))
         screen.blit(restart, (210, 300))
 
