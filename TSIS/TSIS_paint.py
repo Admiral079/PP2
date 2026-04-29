@@ -59,9 +59,32 @@ def draw_triangle(surface, p1, p2, draw_color):
 def draw_equilateral(surface, p1, p2, draw_color):
     x1, y1 = p1
     x2, y2 = p2
-    dx = x2 - x1
-    h = int(abs(dx) * (3 ** 0.5) / 2)
-    pygame.draw.polygon(surface, draw_color, [p1, p2, (x1 + dx//2, y1 - h)], brush_size)
+    left, right = sorted((x1, x2))
+    top, bottom = sorted((y1, y2))
+    width = right - left
+    height = bottom - top
+
+    if width == 0 or height == 0:
+        return
+
+    side = min(width, (2 * height) / math.sqrt(3))
+    tri_height = side * math.sqrt(3) / 2
+    center_x = (left + right) / 2
+
+    if y2 >= y1:
+        points = [
+            (round(center_x), top),
+            (round(center_x - side / 2), round(top + tri_height)),
+            (round(center_x + side / 2), round(top + tri_height))
+        ]
+    else:
+        points = [
+            (round(center_x), bottom),
+            (round(center_x - side / 2), round(bottom - tri_height)),
+            (round(center_x + side / 2), round(bottom - tri_height))
+        ]
+
+    pygame.draw.polygon(surface, draw_color, points, brush_size)
 
 def draw_rhombus(surface, p1, p2, draw_color):
     x1, y1 = p1
