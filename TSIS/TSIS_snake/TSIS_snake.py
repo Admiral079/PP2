@@ -21,6 +21,25 @@ def run_game(best_score):
     foods = []
     food_timers = []
 
+    def draw_diamond(surface, color, pos):
+        x, y = pos
+        half = CELL // 2
+        points = [
+            (x + half, y),
+            (x + CELL, y + half),
+            (x + half, y + CELL),
+            (x, y + half),
+        ]
+        pygame.draw.polygon(surface, color, points)
+
+    def draw_poison(surface, pos):
+        x, y = pos
+        center = (x + CELL // 2, y + CELL // 2)
+        radius = CELL // 2 - 2
+        pygame.draw.circle(surface, (139, 0, 0), center, radius)
+        pygame.draw.line(surface, (255, 255, 255), (x + 4, y + 4), (x + CELL - 4, y + CELL - 4), 2)
+        pygame.draw.line(surface, (255, 255, 255), (x + CELL - 4, y + 4), (x + 4, y + CELL - 4), 2)
+
     def get_food():
         while True:
             pos = (random.randrange(0, WIDTH, CELL),
@@ -37,10 +56,6 @@ def run_game(best_score):
     score = 0
     level = 1
     speed = 7
-
-    # =========================
-    # NEW TSIS REQUIREMENTS
-    # =========================
 
     poison = None
     poison_timer = 0
@@ -86,8 +101,6 @@ def run_game(best_score):
                    random.randrange(0, HEIGHT, CELL))
             if pos not in snake:
                 obstacles.append(pos)
-
-    # =========================
 
     running = True
     game_over = False
@@ -228,11 +241,11 @@ def run_game(best_score):
             pygame.draw.rect(screen, color, (*food_pos, CELL, CELL))
 
         if poison:
-            pygame.draw.rect(screen, (139,0,0), (*poison, CELL, CELL))
+            draw_poison(screen, poison)
 
         if power_up:
             colors = {"speed":(0,255,255),"slow":(0,0,255),"shield":(255,255,255)}
-            pygame.draw.rect(screen, colors[power_type], (*power_up, CELL, CELL))
+            draw_diamond(screen, colors[power_type], power_up)
 
         for obs in obstacles:
             pygame.draw.rect(screen, (120,120,120), (*obs, CELL, CELL))

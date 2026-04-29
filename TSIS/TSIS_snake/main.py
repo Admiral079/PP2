@@ -72,6 +72,7 @@ while running:
 
                 score, level = run_game(best_score)  # запускаем игру
                 save_game(player_id, score, level)
+                best_score = get_best_score(player_id)
 
             if lead_btn.collidepoint(mouse):
                 state = "leaderboard"
