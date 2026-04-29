@@ -116,13 +116,18 @@ while running:
                 pygame.draw.line(canvas, current_color, start_pos, end_pos, brush_size)
             elif mode == "rect":
                 rect = pygame.Rect(start_pos, (end_pos[0]-start_pos[0], end_pos[1]-start_pos[1]))
-                pygame.draw.rect(canvas, current_color, rect, brush_size)
+                rect.normalize()
+                pygame.draw.rect(canvas, current_color, rect)
             elif mode == "circle":
                 r = int(math.dist(start_pos, end_pos))
                 pygame.draw.circle(canvas, current_color, start_pos, r, brush_size)
             elif mode == "square":
-                s = min(abs(end_pos[0]-start_pos[0]), abs(end_pos[1]-start_pos[1]))
-                pygame.draw.rect(canvas, current_color, (*start_pos, s, s), brush_size)
+                dx = end_pos[0] - start_pos[0]
+                dy = end_pos[1] - start_pos[1]
+                s = min(abs(dx), abs(dy))
+                left = start_pos[0] if dx >= 0 else start_pos[0] - s
+                top = start_pos[1] if dy >= 0 else start_pos[1] - s
+                pygame.draw.rect(canvas, current_color, (left, top, s, s))
             elif mode == "tri_right":
                 draw_triangle(canvas, start_pos, end_pos, current_color)
             elif mode == "tri_eq":
